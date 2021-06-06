@@ -1,0 +1,5 @@
+extends base
+block content
+    div(class="card card-body") 
+      each product in products
+            p: a(href=`/${product.id}`)= product.name
