@@ -1,5 +1,26 @@
 extends base
 block content
-    div(class="card card-body") 
-      each product in products
-            p: a(href=`/${product.id}`)= product.name
+    .mainCatalog(class="row")
+        div(class="flex-shrink-0 p-3 bg-white col-md-3")
+            p(class="fs-5 fw-semibold") Фільтри
+        
+            ul(class="list-unstyled")
+                li(class="mb-1")
+                    button(class="btn btn-toggle align-items-center rounded collapsed" data-toggle="collapse" data-target="#home-collapse" aria-expanded="true") Категорії
+                    div(class="collapse show" id="home-collapse")
+                        ul(class="btn-toggle-nav list-unstyled fw-normal pb-1 small")
+                            li: a(href="#" class="link-dark rounded")
+                            each category in categories
+                                if (category.id_category_parent == NULL)
+                                    li: a.parent(href=`/catalog?cat=${category.id}` class="link-dark rounded categoryLink")= category.name
+                                    each categoryChild in categories
+                                        if (categoryChild.id_category_parent == category.id)
+                                            li: a(href=`/catalog?cat=${categoryChild.id}` class="link-dark rounded")= categoryChild.name
+        div.productCards(class="col-md-9 row")
+            each product in products 
+                div.card(class="card col-md-3 m-3")
+                    img(src=`/img/products/${product.preview_img}` class="card-img-top cardImg" alt="...")
+                    div(class="card-body")
+                        p(class="card-title"): a(href=`/product/${product.id}`)= product.name
+                    div(class="card-footer bg-transparent")
+                        small(class="text-muted")= `${product.id_price_price.UAH}.${product.id_price_price.coins}`

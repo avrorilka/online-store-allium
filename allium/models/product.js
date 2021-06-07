@@ -23,38 +23,20 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    id_price_discount: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'price',
-        key: 'id'
-      }
-    },
-    discount_percent: {
-      type: DataTypes.DECIMAL(10,0),
-      allowNull: true
-    },
     detail_img: {
       type: DataTypes.STRING(50),
-      allowNull: true
+      allowNull: true,
+      defaultValue: "default.jpg"
     },
     preview_img: {
       type: DataTypes.STRING(50),
-      allowNull: true
-    },
-    id_status: {
-      type: DataTypes.INTEGER,
       allowNull: true,
-      references: {
-        model: 'status',
-        key: 'id'
-      }
+      defaultValue: "default.jpg"
     }
   }, {
     sequelize,
     tableName: 'product',
-    timestamps: false,
+    timestamps: true,
     indexes: [
       {
         name: "PRIMARY",
@@ -65,24 +47,10 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "id_status",
-        using: "BTREE",
-        fields: [
-          { name: "id_status" },
-        ]
-      },
-      {
         name: "id_price",
         using: "BTREE",
         fields: [
           { name: "id_price" },
-        ]
-      },
-      {
-        name: "id_price_discount",
-        using: "BTREE",
-        fields: [
-          { name: "id_price_discount" },
         ]
       },
     ]

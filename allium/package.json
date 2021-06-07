@@ -12,6 +12,7 @@
     "@admin-bro/express": "^3.1.0",
     "@admin-bro/sequelize": "^1.2.1",
     "admin-bro": "^4.0.1",
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -29,6 +30,7 @@
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/node": "^7.14.2",
-    "@babel/preset-env": "^7.14.4"
+    "@babel/preset-env": "^7.14.4",
+    "sequelize-cli": "^6.2.0"
   }
 }

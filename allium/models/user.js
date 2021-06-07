@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     mail: {
       type: DataTypes.STRING(20),
-      allowNull: false
+      allowNull: false,
+      unique: "mail"
     },
     phone: {
       type: DataTypes.STRING(20),
@@ -40,14 +41,6 @@ module.exports = (sequelize, DataTypes) => {
     address: {
       type: DataTypes.STRING(50),
       allowNull: false
-    },
-    id_status: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'status',
-        key: 'id'
-      }
     }
   }, {
     sequelize,
@@ -63,19 +56,18 @@ module.exports = (sequelize, DataTypes) => {
         ]
       },
       {
-        name: "id_status",
+        name: "mail",
+        unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_status" },
+          { name: "mail" },
         ]
       },
     ]
-  },
-  );
-  User.associate = function(models) {
-};
+  });
+  User.associate = function(models) {};
 
-User.prototype.validPassword = function(password) {
+  User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password_hash);
 };
 

@@ -18,14 +18,6 @@ module.exports = function(sequelize, DataTypes) {
         model: 'category',
         key: 'id'
       }
-    },
-    id_status: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'status',
-        key: 'id'
-      }
     }
   }, {
     sequelize,
@@ -38,13 +30,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
-        ]
-      },
-      {
-        name: "id_status",
-        using: "BTREE",
-        fields: [
-          { name: "id_status" },
         ]
       },
       {

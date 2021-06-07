@@ -1,4 +1,9 @@
 extends base
 block content
-    p= product.name
-    p= product.description
+    div(class="row g-5 product")
+        div(class="col-md-8")
+        div(class="product-body")
+            h2(class="blog-post-title index-title")= product.name
+            hr
+            p= product.description
+            p= product.categories

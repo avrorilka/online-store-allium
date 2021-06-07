@@ -7,7 +7,10 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
     authenticate: async (email, password) => {
       const user = await User.findOne({ email })
         if (user) {
-          if (password === user.password_hash) {
+          // if (password === user.password_hash) {
+          //   return user
+          // }
+          if (user.validPassword(password)){
             return user
           }
         }

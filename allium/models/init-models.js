@@ -44,6 +44,8 @@ function initModels(sequelize) {
   backet.hasMany(backet_product, { as: "backet_products", foreignKey: "id_backet"});
   order.belongsTo(backet, { as: "id_backet_backet", foreignKey: "id_backet"});
   backet.hasMany(order, { as: "orders", foreignKey: "id_backet"});
+  category.belongsTo(category, { as: "id_category_parent_category", foreignKey: "id_category_parent"});
+  category.hasMany(category, { as: "categories", foreignKey: "id_category_parent"});
   category_product.belongsTo(category, { as: "id_category_category", foreignKey: "id_category"});
   category.hasMany(category_product, { as: "category_products", foreignKey: "id_category"});
   category_property_n_v.belongsTo(category, { as: "id_category_category", foreignKey: "id_category"});
@@ -54,10 +56,6 @@ function initModels(sequelize) {
   group.hasMany(user_group, { as: "user_groups", foreignKey: "id_group"});
   product.belongsTo(price, { as: "id_price_price", foreignKey: "id_price"});
   price.hasMany(product, { as: "products", foreignKey: "id_price"});
-  product.belongsTo(price, { as: "id_price_discount_price", foreignKey: "id_price_discount"});
-  price.hasMany(product, { as: "id_price_discount_products", foreignKey: "id_price_discount"});
-  product.belongsTo(price, { as: "id_status_price", foreignKey: "id_status"});
-  price.hasMany(product, { as: "id_status_products", foreignKey: "id_status"});
   backet_product.belongsTo(product, { as: "id_product_product", foreignKey: "id_product"});
   product.hasMany(backet_product, { as: "backet_products", foreignKey: "id_product"});
   category_product.belongsTo(product, { as: "id_product_product", foreignKey: "id_product"});
@@ -74,14 +72,8 @@ function initModels(sequelize) {
   property_name_value.hasMany(category_property_n_v, { as: "category_property_n_vs", foreignKey: "id_property_name_value"});
   property_name_value.belongsTo(property_value, { as: "id_value_property_value", foreignKey: "id_value"});
   property_value.hasMany(property_name_value, { as: "property_name_values", foreignKey: "id_value"});
-  backet.belongsTo(status, { as: "id_status_status", foreignKey: "id_status"});
-  status.hasMany(backet, { as: "backets", foreignKey: "id_status"});
-  category.belongsTo(status, { as: "id_status_status", foreignKey: "id_status"});
-  status.hasMany(category, { as: "categories", foreignKey: "id_status"});
   order.belongsTo(status, { as: "id_status_status", foreignKey: "id_status"});
   status.hasMany(order, { as: "orders", foreignKey: "id_status"});
-  user.belongsTo(status, { as: "id_status_status", foreignKey: "id_status"});
-  status.hasMany(user, { as: "users", foreignKey: "id_status"});
   product_storage.belongsTo(storage, { as: "id_storage_storage", foreignKey: "id_storage"});
   storage.hasMany(product_storage, { as: "product_storages", foreignKey: "id_storage"});
   backet.belongsTo(user, { as: "id_user_user", foreignKey: "id_user"});

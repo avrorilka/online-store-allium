@@ -8,8 +8,6 @@ header.header
         li
           a(href="/" class="nav-link px-2") Головна
         li
-          a(href="#collapseExample" class="nav-link px-2 dropdown in" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample") Категорії
-        li
           a(href="/catalog" class="nav-link px-2") Всі товари
         li
           a(href="/#aboutAllium" class="nav-link px-2") Про нас
@@ -17,12 +15,3 @@ header.header
       div(class="col-md-3 text-end")
         a(class="nav-link px-2 link-dark login" href='/admin')
           span Увійти
-  div(class="collapse megamenu" id="collapseExample")
-    div(class="card card-body") 
-      each category in categories
-        if (category.id_category_parent == NULL)
-            p: a.parent(href=`/catalog/${category.id}`)= category.name
-            each categoryChild in categories
-                if (categoryChild.id_category_parent == category.id)
-                    p: a.child(href=`/catalog/${categoryChild.id}`)= categoryChild.name
-  
