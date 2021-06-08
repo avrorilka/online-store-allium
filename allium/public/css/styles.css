@@ -67,6 +67,7 @@ div.card-footer {
 
 div.productCards {
   padding: 0;
+  margin-left: 15px;
 }
 
 div.card {
@@ -75,6 +76,14 @@ div.card {
 }
 
 div.megamenu {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 72%;
+  margin-bottom: 20px;
+}
+
+div.table {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -211,6 +220,18 @@ a.login:link, a.login:visited {
 a.login:hover, a.login:active {
   background-color: #e07a5f;
   color: white;
+}
+
+a.buy:link, a.buy:visited, a.buy:hover, a.buy:active {
+  background-color: #e07a5f;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 150px;
+  border-radius: 3px;
 }
 
 

@@ -14,6 +14,11 @@ module.exports = function(sequelize, DataTypes) {
         model: 'user',
         key: 'id'
       }
+    },
+    completed: {
+      type: DataTypes.TINYINT,
+      allowNull: true,
+      defaultValue: 0
     }
   }, {
     sequelize,

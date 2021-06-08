@@ -1,5 +1,5 @@
 import { ApiClient } from 'admin-bro'
-import { Box, Header, Text} from '@admin-bro/design-system'
+import { Box, Header, Text, Link, LinkProps } from '@admin-bro/design-system'
 import React, { useEffect, useState } from "react";
 
 const api = new ApiClient()
@@ -18,6 +18,9 @@ const Dashboard = () => {
       <Box variant="white">
         <Header.H2>Адміністративна панель магазину одягу Allium</Header.H2>
         <Text variant="lg" marginBottom={5}>Оберіть категорію для редагування у навігаційному меню</Text>
+        <Header.H3>Статистика: </Header.H3>
+        <Link href="/getTotalAmount" variant="primary" mr="xl">Товар на складі</Link>
+        <Link href="/getOrderAmount" variant="primary" mr="xl">Товару куплено</Link>
       </Box>
     </Box>
   )

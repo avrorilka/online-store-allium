@@ -1,9 +1,52 @@
 extends base
 block content
-    div(class="row g-5 product")
-        div(class="col-md-8")
-        div(class="product-body")
-            h2(class="blog-post-title index-title")= product.name
+    div.mainCatalog(class="row")
+        div(class="col-md-5 mb-4 mb-md-0")
+            div(class="col-12 mb-0")
+                img(src=`/img/products/${product.preview_img}` class="img-fluid z-depth-1")
+        div(class="col-md-7")
+            h5= product.name
+            p: span(class="mr-1")= `${product.id_price_price.UAH}.${product.id_price_price.coins} UAH`
+            p(class="pt-1")= product.description
             hr
-            p= product.description
-            p= product.categories
+            div(class="table-responsive mb-2")
+                table(class="table table-sm table-borderless")
+                    tr
+                        td(class="pl-0 pb-0 w-25") Кількість
+                        td(class="pb-0") Розмір
+                    <tr>
+                        td(class="pl-0")
+                            div(class="def-number-input number-input safari_only mb-0")
+                                input(class="quantity" min="1" name="quantity" value="1" type="number")
+                        td
+                            div(class="mt-1")
+                                div(class="form-check form-check-inline pl-0")
+                                    input(type="radio" class="form-check-input" id="small" name="materialExampleRadios" checked)
+                                    label(class="form-check-label small text-uppercase card-link-secondary" for="small") S
+                                div(class="form-check form-check-inline pl-0")
+                                    input(type="radio" class="form-check-input" id="medium" name="materialExampleRadios")
+                                    label(class="form-check-label small text-uppercase card-link-secondary" for="medium") M
+                                div(class="form-check form-check-inline pl-0")
+                                    input(type="radio" class="form-check-input" id="large" name="materialExampleRadios")
+                                    label(class="form-check-label small text-uppercase card-link-secondary" for="large") L
+            div
+                a(class="btn-md mr-1 mb-2 nav-link px-2 link-dark buy" data-toggle="modal" data-target="#buyModal" href='#')
+                    span Купити
+
+    div(class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModal" aria-hidden="true")
+        div(class="modal-dialog" role="document")
+            div(class="modal-content")
+                div(class="modal-header")
+                    h5(class="modal-title") Ваші дані
+                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                div(class="modal-body")
+                    form
+                        div(class="form-group")
+                            label(for="recipient-name" class="col-form-label") Ім'я:
+                            input(type="text" class="form-control" id="recipient-name" required)
+                        div(class="form-group")
+                            label(for="mail" class="col-form-label") Поштова скринька:
+                            input(type="email" class="form-control" id="mail" required)
+                        div(class="modal-footer")
+                            button(class="btn btn-primary" type="submit" data-toggle="modal" data-target="#SuccessModal") Надіслати
