@@ -30,8 +30,15 @@ $(document).ready(function(){
         }
       ]
     });
+
     $('#buyModal').on('hidden.bs.modal', function (e) {
       console.log('closed')
-    })
+    });
+
+    $("#userInfo").on("submit", function (event) {
+      event.preventDefault();
+      $(".modal-content .close").click();
+      alert("Дякуємо, ми надішлемо Вам повідомлення!");
+  });
  });
 

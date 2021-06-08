@@ -19,8 +19,8 @@ const Dashboard = () => {
         <Header.H2>Адміністративна панель магазину одягу Allium</Header.H2>
         <Text variant="lg" marginBottom={5}>Оберіть категорію для редагування у навігаційному меню</Text>
         <Header.H3>Статистика: </Header.H3>
-        <Link href="/getTotalAmount" variant="primary" mr="xl">Товар на складі</Link>
-        <Link href="/getOrderAmount" variant="primary" mr="xl">Товару куплено</Link>
+        <Link href="/getTotalAmount" variant="primary" mr="xl">Кількість товару на складі</Link>
+        <Link href="/getOrderAmount" variant="primary" mr="xl">Кількість придбаного товару</Link>
       </Box>
     </Box>
   )
